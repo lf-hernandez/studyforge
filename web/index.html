@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyForge - AI-Powered Study Assistant</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📚 StudyForge</h1>
+            <p class="tagline">Transform Your Textbooks Into Smart Study Materials</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="card upload-section" id="uploadSection">
+                <h2>Upload Your Textbook</h2>
+                <p class="section-description">Upload a PDF textbook to get started. Maximum file size: 50MB</p>
+
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Drag and drop your PDF here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <button class="btn btn-primary" id="browseBtn">Choose PDF File</button>
+                </div>
+
+                <div class="file-info" id="fileInfo" style="display: none;">
+                    <h3>Uploaded Document</h3>
+                    <p><strong>Filename:</strong> <span id="fileName"></span></p>
+                    <p><strong>Pages:</strong> <span id="pageCount"></span></p>
+                    <p><strong>Size:</strong> <span id="fileSize"></span></p>
+                </div>
+            </section>
+
+            <!-- Generation Section -->
+            <section class="card generation-section" id="generationSection" style="display: none;">
+                <h2>Generate Study Materials</h2>
+                <p class="section-description">Select page range and generate a summary</p>
+
+                <form class="generation-form" id="generationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pageStart">Start Page</label>
+                            <input type="number" id="pageStart" min="1" value="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="pageEnd">End Page</label>
+                            <input type="number" id="pageEnd" min="1" value="10" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="academicLevel">Academic Level</label>
+                        <select id="academicLevel">
+                            <option value="high_school">High School</option>
+                            <option value="undergraduate" selected>Undergraduate</option>
+                            <option value="graduate">Graduate</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large" id="generateBtn">
+                        Generate Summary
+                    </button>
+                </form>
+
+                <div class="loading" id="loadingIndicator" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating your summary... This may take a few moments.</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="card results-section" id="resultsSection" style="display: none;">
+                <h2>Generated Summary</h2>
+                <div class="results-meta">
+                    <span class="meta-item"><strong>Pages:</strong> <span id="resultPages"></span></span>
+                    <span class="meta-item"><strong>Level:</strong> <span id="resultLevel"></span></span>
+                    <span class="meta-item"><strong>Time:</strong> <span id="resultTime"></span>ms</span>
+                </div>
+                <div class="summary-content" id="summaryContent"></div>
+                <button class="btn btn-secondary" id="generateAnotherBtn">Generate Another Summary</button>
+            </section>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage" style="display: none;">
+                <strong>Error:</strong> <span id="errorText"></span>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>StudyForge MVP - Powered by Hugging Face AI</p>
+        </footer>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>

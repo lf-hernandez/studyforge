@@ -1,0 +1,43 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+studyforge
+
+# Go build cache
+*.test
+*.out
+vendor/
+
+# Environment files
+.env
+.env.local
+
+# Data and uploads
+data/
+uploads/
+*.db
+
+# Test files
+test_*.go
+find_*.go
+*_test.go
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Build artifacts
+dist/
+build/
